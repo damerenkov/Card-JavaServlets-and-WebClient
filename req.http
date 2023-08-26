@@ -1,0 +1,146 @@
+### //correct request
+POST http://localhost:8080/CardHibernate/user
+
+###
+POST http://localhost:8080/CardHibernate/login?login=denis&password=qwerty
+
+###
+// User Servlet
+
+### // correct request
+GET http://localhost:8080/CardHibernate/login?id=1
+### //No such User
+GET http://localhost:8080/CardHibernate/user?id=100
+### //Incorrect data
+GET http://localhost:8080/CardHibernate/user?ids=34
+### //Incorrect id
+GET http://localhost:8080/CardHibernate/user?id=qwer
+
+### //correct request
+POST http://localhost:8080/CardHibernate/registration
+Content-Type: application/json
+
+{
+  "login": "vovkiky",
+  "password": "qwerty",
+  "name": "lava"
+}
+
+###
+POST http://localhost:8080/CardHibernate/registration?login=htr&password=qwerty&name=rett
+
+###
+PUT http://localhost:8080/CardHibernate/login?id=1
+
+### // correct request
+DELETE http://localhost:8080/CardHibernate/user?id=3
+### //No such User
+DELETE http://localhost:8080/CardHibernate/user?id=100
+### //Incorrect data
+DELETE http://localhost:8080/CardHibernate/user?ids=34
+### //Incorrect id
+DELETE http://localhost:8080/CardHibernate/user?id=qwer
+
+
+// Category Servlet
+
+### //correct request
+POST http://localhost:8080/CardHibernate/category
+Content-Type: application/json
+
+{
+  "name": "Category 10",
+  "user": {
+    "id": 1
+  }
+}
+
+
+
+
+### // correct request
+GET http://localhost:8080/CardHibernate/category?id=10
+### //No such category
+GET http://localhost:8080/CardHibernate/category?id=100
+### //Incorrect data
+GET http://localhost:8080/CardHibernate/category?ids=34
+### //Incorrect id
+GET http://localhost:8080/CardHibernate/category?id=qwer
+### // correct request list categories
+GET http://localhost:8080/CardHibernate/category?user=1
+
+### //No such User
+GET http://localhost:8080/CardHibernate/category?user=100
+### //Incorrect data
+GET http://localhost:8080/CardHibernate/carugory?us=34
+### //Incorrect user id
+GET http://localhost:8080/CardHibernate/category?user=qwer
+
+###
+PUT http://localhost:8080/CardHibernate/category
+Content-Type: application/json
+
+{
+  "id": 10,
+  "name": "Category 3",
+  "user": {
+    "id": 2
+  }
+}
+
+###
+PUT http://localhost:8080/CardHibernate/category
+Content-Type: application/json
+
+{
+  "id": 10,
+  "name": "Category_1423",
+  "user": {
+    "id": 2
+  }
+}
+
+### // correct request
+DELETE http://localhost:8080/CardHibernate/category?id=3
+### //No such category
+DELETE http://localhost:8080/CardHibernate/category?id=100
+### //Incorrect data
+DELETE http://localhost:8080/CardHibernate/category?ids=34
+### //Incorrect id
+DELETE http://localhost:8080/CardHibernate/category?id=qwer
+
+
+// Card Servlet
+### //Correct request
+POST http://localhost:8080/CardHibernate/card
+Content-Type: application/json
+
+{
+  "question": "What",
+  "answer": "Where",
+  "category": {
+    "id": 2
+  }
+}
+
+### //Incorrect request
+POST http://localhost:8080/CardHibernate/card
+Content-Type: application/json
+
+{
+  "question": "What",
+  "answer": "Where"
+}
+
+### //correct request
+GET http://localhost:8080/CardHibernate/card?id=1
+### // no such card
+GET http://localhost:8080/CardHibernate/card?id=100
+### // incorrect id
+GET http://localhost:8080/CardHibernate/card?id=ewq
+### // incorrect data
+GET http://localhost:8080/CardHibernate/card?ids=23
+### // correct request list cards
+GET http://localhost:8080/CardHibernate/card?user=7
+### // no such category
+GET http://localhost:8080/CardHibernate/card&category=100
